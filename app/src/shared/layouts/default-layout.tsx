@@ -1,8 +1,17 @@
 import React, { type FC } from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/shared/hooks";
 
 const DefaultLayout: FC = () => {
-  return <Outlet />;
+  const { user } = useAuth();
+
+  if (!user) return <Navigate to="/auth/login" />;
+
+  return (
+    <main>
+      <Outlet />
+    </main>
+  );
 };
 
 export default DefaultLayout;
