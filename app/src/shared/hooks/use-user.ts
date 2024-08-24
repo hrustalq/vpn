@@ -1,14 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import { useLocalStorage } from "./use-local-storage";
-
-// NOTE: optimally move this into a separate file
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  authToken?: string;
-}
+import { User } from "@/entities/user";
 
 export const useUser = () => {
   const { user, setUser } = useContext(AuthContext);
