@@ -94,7 +94,7 @@ export class AuthController {
   @Post('signup')
   @Public()
   async signUp(@Res() res: Response, @Body() dto: Omit<CreateUserDto, 'role'>) {
-    const find = await this.usersService.findUserByEmail(dto.email);
+    const find = await this.usersService.findByEmail(dto.email);
 
     if (find) {
       throw new UnauthorizedException('Invalid credentials');

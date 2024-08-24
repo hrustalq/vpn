@@ -19,7 +19,7 @@ export class AuthService {
   ) {}
 
   async validateUser(dto: LoginDto): Promise<boolean> {
-    const user = await this.usersService.findUserByEmail(dto.email);
+    const user = await this.usersService.findByEmail(dto.email);
     if (!user?.password) return false;
 
     const passwordsMatch = await compare(dto.password, user.password);
