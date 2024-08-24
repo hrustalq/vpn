@@ -1,4 +1,4 @@
 export default {
-  port: process.env.APP_PORT,
+  port: parseInt(process.env.APP_PORT, 10) || 3000,
   origin: process.env.APP_ORIGIN,
 };
